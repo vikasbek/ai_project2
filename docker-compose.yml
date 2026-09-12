@@ -1,0 +1,100 @@
+services:
+  frontend:
+    build: ./frontend
+    container_name: frontend
+    ports:
+      - "3000:3000"
+    environment:
+      NEXT_PUBLIC_API_BASE_URL: http://localhost:4000/api
+    depends_on:
+      - api-gateway
+
+  api-gateway:
+    build: ./backend-service/api-gateway
+    container_name: api-gateway
+    ports:
+      - "4000:4000"
+    environment:
+      PORT: 4000
+      USER_SERVICE_URL: http://user-service:8000
+      CHAT_SERVICE_URL: http://chat-service:8000
+      MESSAGE_SERVICE_URL: http://message-service:8000
+      NOTIFICATION_SERVICE_URL: http://notification-service:8000
+      PAYMENT_SERVICE_URL: http://payment-service:8005
+      ORDER_SERVICE_URL: http://order-service:8006
+      PRODUCT_SERVICE_URL: http://product-service:8007
+    depends_on:
+      - user-service
+      - chat-service
+      - message-service
+      - notification-service
+      - payment-service
+      - order-service
+      - product-service
+
+  user-service:
+    build: ./backend-service/user-service
+    container_name: user-service
+    ports:
+      - "8001:8000"
+    environment:
+      SERVICE_NAME: user-service
+      MONGO_URI: mongodb+srv://vikasbek35_db_user:${MONGO_PASSWORD}@ai-ml-project1.yvtnqrp.mongodb.net/?retryWrites=true&w=majority
+      MONGO_DB_NAME: user_service_db
+
+  chat-service:
+    build: ./backend-service/chat-service
+    container_name: chat-service
+    ports:
+      - "8002:8000"
+    environment:
+      SERVICE_NAME: chat-service
+      MONGO_URI: mongodb+srv://vikasbek35_db_user:${MONGO_PASSWORD}@ai-ml-project1.yvtnqrp.mongodb.net/?retryWrites=true&w=majority
+      MONGO_DB_NAME: chat_service_db
+
+  message-service:
+    build: ./backend-service/message-service
+    container_name: message-service
+    ports:
+      - "8003:8000"
+    environment:
+      SERVICE_NAME: message-service
+      MONGO_URI: mongodb+srv://vikasbek35_db_user:${MONGO_PASSWORD}@ai-ml-project1.yvtnqrp.mongodb.net/?retryWrites=true&w=majority
+      MONGO_DB_NAME: message_service_db
+
+  notification-service:
+    build: ./backend-service/notification-service
+    container_name: notification-service
+    ports:
+      - "8004:8000"
+    environment:
+      SERVICE_NAME: notification-service
+      MONGO_URI: mongodb+srv://vikasbek35_db_user:${MONGO_PASSWORD}@ai-ml-project1.yvtnqrp.mongodb.net/?retryWrites=true&w=majority
+      MONGO_DB_NAME: notification_service_db
+
+  payment-service:
+    build: ./backend-service/payment-service
+    container_name: payment-service
+    ports:
+      - "8005:8005"
+    environment:
+      MONGO_URI: mongodb+srv://vikasbek35_db_user:${MONGO_PASSWORD}@ai-ml-project1.yvtnqrp.mongodb.net/?retryWrites=true&w=majority
+      MONGO_DB_NAME: payment_service_db
+
+  order-service:
+    build: ./backend-service/order-service
+    container_name: order-service
+    ports:
+      - "8006:8006"
+    environment:
+      MONGO_URI: mongodb+srv://vikasbek35_db_user:${MONGO_PASSWORD}@ai-ml-project1.yvtnqrp.mongodb.net/?retryWrites=true&w=majority
+      MONGO_DB_NAME: order_service_db
+
+  product-service:
+    build: ./backend-service/product-service
+    container_name: product-service
+    ports:
+      - "8007:8007"
+    environment:
+      MONGO_URI: mongodb+srv://vikasbek35_db_user:${MONGO_PASSWORD}@ai-ml-project1.yvtnqrp.mongodb.net/?retryWrites=true&w=majority
+      MONGO_DB_NAME: product_service_db

@@ -1,0 +1,105 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  color: #111;
+  background: #fff;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+.crud-page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+.crud-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.crud-nav a {
+  color: #1a56db;
+  text-decoration: none;
+}
+
+.crud-nav a:hover {
+  text-decoration: underline;
+}
+
+.crud-section h2 {
+  margin-bottom: 0.75rem;
+}
+
+.crud-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1rem;
+  border: 1px solid #e2e2e2;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+}
+
+.crud-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 0.9rem;
+}
+
+.crud-field input[type="text"],
+.crud-field input[type="number"],
+.crud-field textarea {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font: inherit;
+}
+
+.crud-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.crud-actions button,
+.crud-row-actions button {
+  padding: 0.4rem 0.9rem;
+  border: 1px solid #333;
+  border-radius: 4px;
+  background: #fff;
+  cursor: pointer;
+}
+
+.crud-actions button:first-child {
+  background: #111;
+  color: #fff;
+}
+
+.crud-error {
+  color: #b00020;
+}
+
+.crud-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.crud-table th,
+.crud-table td {
+  text-align: left;
+  padding: 0.5rem;
+  border-bottom: 1px solid #eee;
+  word-break: break-word;
+}
+
+.crud-row-actions {
+  display: flex;
+  gap: 0.4rem;
+  white-space: nowrap;
+}
