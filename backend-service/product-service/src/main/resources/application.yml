@@ -1,0 +1,17 @@
+server:
+  port: 8007
+
+spring:
+  application:
+    name: product-service
+  data:
+    mongodb:
+      uri: mongodb+srv://vikasbek35_db_user:4LIgUKf1GWdtlyBj@ai-ml-project1.yvtnqrp.mongodb.net/?retryWrites=true&w=majority
+      database: user_service_db
+
+service:
+  name: product-service
+
+
+# MONGO_URI=mongodb+srv://vikasbek35_db_user:4LIgUKf1GWdtlyBj@ai-ml-project1.yvtnqrp.mongodb.net/?retryWrites=true&w=majority
+# MONGO_DB_NAME=user_service_db
